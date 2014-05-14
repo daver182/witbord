@@ -1,0 +1,120 @@
+!!!
+html
+	head
+		title Pizarra digital interactiva
+	
+		link(rel="stylesheet", type="text/css", href="/stylesheets/style.css", media="only screen and (min-width: 1024px) ")
+		link(rel="stylesheet", type="text/css", href="/stylesheets/style2.css", media="only screen and (max-width: 800px), (max-width: 768px)")
+		
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  minimum-scale=1.0, user-scalable=no")
+		meta(charset="utf-8")
+
+		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Offside")
+
+	body
+
+		div#container
+			div#toolbar
+				button#clear-canvas
+				div.separator
+				button#save-canvas
+				div.separator
+				div#colors
+					button#yellow
+					button#blue
+					button#orange
+					button#pink
+					button#green
+					button#red
+					button#black
+					button#white
+				
+				div.separator
+				a#change-topic(href='/find_topics')
+				
+				
+				div.separator
+				div#slider-button
+					div#shape
+				
+
+			div#canvas-container
+				canvas#main-canvas(width="850", height="1100")
+					|Tu navegador no soporta Canvas
+			
+			div
+				div#slider-container.slider-visible
+					input#slider(type="range", value="1", min="1", max="25", data-highlight="true", step="1")
+					div#size-container
+						div#size-shape(style="left: 10px; top: 10px;")
+
+			//div#topic
+				p=topic.nameTopic
+				- var dateT = topic.dateTopic.getDate() + '-' + (topic.dateTopic.getMonth() + 1) + '-' + topic.dateTopic.getFullYear();
+				span=dateT
+			
+			div#user-info
+				div#options
+					a#home(href='#/')
+					a#logout
+				
+				p=user.name
+				span=user.type
+
+			
+			div#users.users-default
+				div#head
+					span
+						|Usuarios
+					div
+				div#user-list
+				
+			
+			div#chat.chat-default
+				div#head
+					span
+						|Mensajes
+					
+					div
+				
+				div#chat-list
+					
+				div#input-chat
+					textarea#message-text
+					button#send-message
+
+			div#notification.notification-out
+
+	script#user-template(type="text/template")
+		<a href="#user/<%= _id %>" id="<%= _id %>"><div class="actual-user inactive"></div><div class="name-user"><%= name %></div><div class="image-user"></div></a>
+
+	script#message-template(type="text/template")
+		<div class="user-message" id="<%= id %>"><strong class="user-name"><%= user_name %>: </strong><%= text %></div>
+
+	script(type="text/javascript", src="/javascripts/jquery-1.8.0.min.js")
+	script(type="text/javascript", src="/javascripts/dropbox.js")
+	script(type="text/javascript", src="/javascripts/base64.js")
+	script(type="text/javascript", src="/javascripts/underscore-min.js")
+	script(type="text/javascript", src="/javascripts/backbone-min.js")
+	script(type="text/javascript", src="/javascripts/backbone.iobind.js")
+	script(type="text/javascript", src="/javascripts/backbone.iosync.js")
+	script(type="text/javascript", src="/javascripts/socket.io.min.js")
+
+	script(type="text/javascript", src="/javascripts/init.js")
+
+	script(type="text/javascript", src="/javascripts/models/message.js")
+	script(type="text/javascript", src="/javascripts/models/user.js")
+
+	script(type="text/javascript", src="/javascripts/views/messageinput.js")
+	script(type="text/javascript", src="/javascripts/views/messagelist.js")
+	script(type="text/javascript", src="/javascripts/views/messagelistitem.js")
+	script(type="text/javascript", src="/javascripts/views/paint.js")
+	script(type="text/javascript", src="/javascripts/views/userlist.js")
+	script(type="text/javascript", src="/javascripts/views/userlistitem.js")
+
+	script(type="text/javascript", src="/javascripts/collections/messages.js")
+	script(type="text/javascript", src="/javascripts/collections/users.js")
+
+	script(type="text/javascript", src="/javascripts/routes/mainrouter.js")
+
+	script(type="text/javascript", src="/javascripts/app.js")

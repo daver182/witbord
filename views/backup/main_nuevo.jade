@@ -1,0 +1,95 @@
+!!!
+html
+	head
+		title Pizarra digital interactiva
+		
+		link(rel="stylesheet", type="text/css", href="stylesheets/style_h_nuevo.css", media="screen and (max-width: 1024px), (max-width: 1280px)")
+		link(rel="stylesheet", type="text/css", href="stylesheets/style_v.css", media="screen and (max-width: 768px), (max-width: 800px)")
+
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  minimum-scale=1.0, user-scalable=no")
+		meta(charset="utf-8")
+
+		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Offside")
+	
+	body
+		div#container
+			div#toolbar
+				a(href='#/')
+					button#home-button
+				div.separator
+				button#clear-canvas
+				div.separator
+				div#colors
+					button#yellow
+					button#blue
+					button#orange
+					button#pink
+					button#green
+					button#red
+					button#black
+					button#white
+				
+				div.separator
+				div
+					div#slider-container
+						input#slider(type="range", value="1", min="1", max="25", data-highlight="true", step="1")
+						div#size-container
+							div#size-shape(style="left: 10px; top: 10px;")
+
+				div#slider-button
+					div#shape
+				
+				a(href='/close_session')
+					button#logout-button
+
+			
+			div#canvas-container
+				canvas#main-canvas(width="850", height="660")
+					|Tu navegador no soporta Canvas
+
+			div(style="position:absolute;left: 61px;top: 0px; width: 95%;height: 50px;background: white; border-bottom: 2px #e2e2e2 solid;")
+				div(style="float:right; text-align:right")
+					p(style="margin: 0; font-size: 15px;") Daniel Alejandro Vergara Urrutia
+					p(style="margin: 0; font-size: 12px;") Alumno
+					a(href="#", style="margin: 0; font-size: 12px;") Cerrar sesión	
+
+				div(style="float:left; margin-left: 10px")
+					p(style="margin:2px;width:850px; height: 40px;")
+						| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla placerat, lorem eu mollis feugiat, orci urna ullamcorper est.
+			
+			div(style="position:absolute;right: 0px;top: 50px; width: 300px;height: 100%;background: white;")
+				Test
+
+				div#users.users-default
+					div#users-header
+						h2 Usuarios
+						div.icon
+
+					div#user-list
+						|No hay usuarios
+
+				
+				div#chat.chat-default
+					div#chat-header
+						h2 Chat
+						div.icon
+
+					div#chat-list
+						div.user-message
+							strong.user-name
+								|Nombre de usuario 1
+							span
+								|: Mensaje de usuario 1
+
+					
+					div#input-chat
+						textarea#message-text
+						button#send-message
+	
+	script#user-template(type="text/template")
+		<a href="#user/<%= _id %>" id="<%= _id %>"><div class="actual-user inactive"></div><div  class="name-user"><%= name %></div><div class="image-user"></div></a>
+
+	script#message-template(type="text/template")
+		<div class="user-message" id="<%= id %>"><strong class="user-name"><%= user_name %>: </strong><%= text %></div>
+
+	

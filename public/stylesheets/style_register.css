@@ -1,0 +1,91 @@
+body{
+	background: #fff;
+	font-family: "Tahoma";
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#form-container{
+	background: url(img_back.png) repeat;
+	border-radius: 10px;
+	width: 320px;
+	margin: 0 auto 0 auto;
+}
+
+#form-container h2{
+	text-align: center;
+	padding-top: 5px;
+}
+
+#name{
+	width: 350px;
+	height: 30px;
+}
+
+#name p{
+	width: 150px;
+	float:left;
+	margin:0;
+	padding: 5px 0 0 5px;
+}
+
+#name input{
+	width: 150px;
+	height: 18px;
+	float:left;
+	
+	margin: 5px 0 0 5px;
+}
+
+#password{
+	width: 350px;
+	height: 30px;
+}
+
+#password p{
+	width: 150px;
+	float:left;
+	margin:0;
+	padding: 5px 0 0 5px;
+}
+
+#password input{
+	width: 150px;
+	height: 18px;
+	float:left;
+	
+	margin: 5px 0 0 5px;
+}
+
+#type{
+	width: 350px;
+	height: 30px;
+}
+
+#type p{
+	width: 150px;
+	float: left;
+	margin:0;
+	padding: 5px 0 0 5px;
+}
+
+#type select{
+	width: 150px;
+	float: left;
+	margin: 5px 0 0 5px;
+}
+
+input[type=submit]{
+	width: 150px;
+	height: 30px;
+	color: #fff;
+	font-weight: bold;
+	clear: left;
+	border-radius:5px;
+	box-shadow: inset 0px -2px #db5220, 0px 2px #e3e3e3;
+	background-image: -webkit-linear-gradient(top,  #f86e3d, #f15a23);
+	border: none;
+
+	margin: 5px 0 5px 160px;
+}

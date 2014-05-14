@@ -1,0 +1,27 @@
+!!!
+html
+	head
+		title Pizarra digital interactiva
+
+		link(rel="stylesheet", type="text/css", href="stylesheets/topics_a.css", media="screen and (max-width: 1024px), (max-width: 1280px)")
+
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  minimum-scale=1.0, user-scalable=no")
+		meta(charset="utf-8")
+
+		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Offside")
+
+	body
+		div#header
+			h1 Witbord
+		div#container
+			h3 Hola #{nameUser}, a continuación debes seleccionar un tema: 
+		
+		each user in users
+			h3.user=user.name
+			each topic in topics
+				if user._id == topic.userId
+					- var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+					- var dateT = topic.dateTopic.getDate() + ' de ' + meses[topic.dateTopic.getMonth()] + ' del ' + topic.dateTopic.getFullYear();
+					a(href="/loadTopic/" + topic._id) #{topic.nameTopic}
+						br
+						span(style="color:#aaa; font-size:12px;") (Creado el #{dateT})

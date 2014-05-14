@@ -1,0 +1,82 @@
+!!!
+html
+	head
+		title Pizarra digital interactiva
+
+		link(rel="stylesheet", type="text/css", href="stylesheets/style_register.css", media="screen and (max-width: 1024px), (max-width: 1280px)")
+
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  minimum-scale=1.0, user-scalable=no")
+		meta(charset="utf-8")
+
+	body
+		p Espere por favor. Redirigiendo...
+
+	script(type="text/javascript", src="/javascripts/jquery-1.8.0.min.js")
+	script(type="text/javascript", src="/javascripts/dropbox.js")
+	script(type="text/javascript")
+		$(document).ready(function(){
+			var client;
+			if (window.localStorage.length == 0 || window.localStorage.getItem('dropbox_auth') == null) {
+				client = new Dropbox.Client({
+					key: "rmxo1r3xtgn2zht", secret: "rx0a99kwu9pljh6", sandbox: true
+				});
+
+				client.authDriver(new Dropbox.Drivers.Redirect({useQuery: false, rememberUser: true}));
+				client.authenticate(function(error, client) {
+					if (error) {
+						console.log(error)
+						return showError(error);
+					}
+					client.getUserInfo(function(error, userInfo){
+						var form = $('<form></form>');
+
+						form.attr("method", "post");
+						form.attr("action", "/check_user");
+
+						var idU = $('<input></input>');
+						var nameU = $('<input></input>');
+
+						idU.attr("type", "hidden");
+						nameU.attr("type", "hidden");
+						idU.attr("name", "idU");
+						nameU.attr("name", "nameU");
+						idU.attr("value", userInfo.uid);
+						nameU.attr("value", userInfo.name);
+
+						form.append(idU);
+						form.append(nameU);
+
+						$(document.body).append(form);
+						form.submit();
+					});
+				});
+			}else{
+				client = new Dropbox.Client(JSON.parse(window.localStorage.getItem('dropbox_auth')));
+				client.getUserInfo(function(error, userInfo){
+					var form = $('<form></form>');
+
+					form.attr("method", "post");
+					form.attr("action", "/check_user");
+
+					var idU = $('<input></input>');
+					var nameU = $('<input></input>');
+
+					idU.attr("type", "hidden");
+					nameU.attr("type", "hidden");
+					idU.attr("name", "idU");
+					nameU.attr("name", "nameU");
+					idU.attr("value", userInfo.uid);
+					nameU.attr("value", userInfo.name);
+
+					form.append(idU);
+					form.append(nameU);
+
+					$(document.body).append(form);
+					form.submit();
+				});
+			}
+
+
+		});
+
+

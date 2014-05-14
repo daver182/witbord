@@ -1,0 +1,24 @@
+!!!
+html
+	head
+		title Pizarra digital interactiva
+
+		link(rel="stylesheet", type="text/css", href="stylesheets/select_type.css", media="screen and (max-width: 1024px), (max-width: 1280px)")
+
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  minimum-scale=1.0, user-scalable=no")
+		meta(charset="utf-8")
+
+		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Offside")
+
+	body
+		div#header
+			h1 Witbord
+		div#container
+			h2 Seleccione el tipo de usuario:
+			form(method='POST', action='/create_user')
+				label
+					select(name="type")
+						option(value="1") Profesor
+						option(value="2") Alumno
+
+				input(type="submit", value="Enviar")
