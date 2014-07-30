@@ -1,0 +1,30 @@
+{
+  "name": "proyecto_tesis",
+  "version": "0.0.0",
+  "description": "Witbord =======",
+  "main": "app.js",
+  "dependencies": {
+    "connect-redis": "~1.4.0",
+    "redis": "~0.7.2",
+    "dropbox": "~0.6.3",
+    "mongoose": "~2.7.3",
+    "open": "~0.0.2",
+    "socket.io": "~0.9.6",
+    "jade": "~0.26.3",
+    "express": "~3.0.0beta7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daver182/witbord.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/daver182/witbord/issues"
+  },
+  "homepage": "https://github.com/daver182/witbord"
+}
