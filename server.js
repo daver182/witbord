@@ -337,7 +337,7 @@ app.post('/check_user', function(req, res){
     users.findOne({uid: req.body.idU}, function(err, user){
       if(!user){
         //Usuario no existe
-        res.render('select_type')
+        res.render('select_type');
       }else{
         //Usuario existe
         var tempUsr = req.session.user;

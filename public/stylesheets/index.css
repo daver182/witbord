@@ -13,11 +13,13 @@ body{
 	text-align: center;
 
 	background: white;
-	height: 300px;
+	
 	border-radius: 10px;
 
 	padding: 5px;
 	margin-top: 10px;
+
+	padding-bottom: 40px;
 }
 
 #header{
